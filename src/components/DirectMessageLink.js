@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { v4 } from "uuid";
 
-const DirectMessageLink = ({ to, label, online, nested, selected }) => {
+const DirectMessageLink = ({ to, label, online, nested, selected, self }) => {
   return (
     <Link
       to={to}
@@ -31,6 +31,7 @@ const DirectMessageLink = ({ to, label, online, nested, selected }) => {
         )}
       </span>
       {label}
+      {self && <span className="text-gray-600">You</span>}
       <button className="ml-auto opacity-0 text-gray-600 hover:text-gray-400 group-hover:opacity-100">
         <FontAwesomeIcon icon={faTimes} />
       </button>

@@ -65,8 +65,8 @@ const Sidebar = ({ children }) => {
             </>
           }
         >
-          <DirectMessageLink to="/" label="John Doe" nested online selected />
-          <DirectMessageLink to="/" label="Don Joe" nested online />
+          <DirectMessageLink to="/" label="John Doe" nested online self />
+          <DirectMessageLink to="/" label="Don Joe" nested online selected />
           <DirectMessageLink to="/" label="Jill Joe" nested />
           <DirectMessageLink to="/" label="Bill Boe" nested />
           <DirectMessageLink to="/" label="Bob Loe" nested online />
