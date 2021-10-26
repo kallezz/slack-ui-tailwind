@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import IconButton from "./IconButton";
 
 const Dropdown = ({ children, label, buttons, className }) => {
@@ -12,13 +12,16 @@ const Dropdown = ({ children, label, buttons, className }) => {
           className && ` ${className}`
         }`}
       >
-        <IconButton icon={faCaretDown} />
+        <IconButton
+          onClick={() => setOpen(!open)}
+          icon={open ? faCaretDown : faCaretRight}
+        />
         {label}
         <div className="ml-auto opacity-0 group-hover:opacity-100 transition-all">
           {buttons}
         </div>
       </div>
-      {open && children}
+      <div className={!open && `hidden`}>{children}</div>
     </>
   );
 };
