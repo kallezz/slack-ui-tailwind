@@ -2,9 +2,16 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { v4 } from "uuid";
 
-const DirectMessageLink = ({ to, label, online, nested, selected, self }) => {
+const DirectMessageLink = ({
+  to,
+  label,
+  online,
+  nested,
+  selected,
+  self,
+  uid,
+}) => {
   return (
     <Link
       to={to}
@@ -19,7 +26,7 @@ const DirectMessageLink = ({ to, label, online, nested, selected, self }) => {
       >
         <img
           className="rounded"
-          src={`https://i.pravatar.cc/64?u=${v4()}`}
+          src={`https://i.pravatar.cc/64?u=${uid || 99999}`}
           alt="Avatar"
         />
         {online ? (

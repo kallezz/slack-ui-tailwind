@@ -20,6 +20,7 @@ import { faSlackHash } from "@fortawesome/free-brands-svg-icons";
 import Dropdown from "./Dropdown";
 import IconButton from "./IconButton";
 import DirectMessageLink from "./DirectMessageLink";
+import users from "../mocks/users.json";
 
 const Sidebar = ({ children }) => {
   return (
@@ -31,7 +32,7 @@ const Sidebar = ({ children }) => {
           <FontAwesomeIcon icon={faEdit} />
         </button>
       </div>
-      <div className="flex flex-col flex-grow text-gray-300 pt-3 pb-3 overflow-y-auto">
+      <div className="sidebar flex flex-col flex-grow text-gray-300 pt-3 pb-3">
         <IconLink to="/" icon={faCommentDots} label="Threads" />
         <IconLink to="/" icon={faComments} label="All DMs" />
         <IconLink to="/" icon={faAt} label="Mentions & reactions" />
@@ -66,11 +67,18 @@ const Sidebar = ({ children }) => {
           }
         >
           <DirectMessageLink to="/" label="John Doe" nested online self />
-          <DirectMessageLink to="/" label="Don Joe" nested online selected />
-          <DirectMessageLink to="/" label="Jill Joe" nested />
-          <DirectMessageLink to="/" label="Bill Boe" nested />
-          <DirectMessageLink to="/" label="Bob Loe" nested online />
-          <DirectMessageLink to="/" label="Dill Goe" nested />
+          {users &&
+            users.map((user, index) => (
+              <DirectMessageLink
+                key={user.id}
+                to={`/chat/${user.id}`}
+                uid={user.id}
+                label={user.username}
+                nested
+                online={user.online}
+                selected={index === 3}
+              />
+            ))}
         </Dropdown>
         <Dropdown
           className="mt-4"
